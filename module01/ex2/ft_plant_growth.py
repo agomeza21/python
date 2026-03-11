@@ -14,7 +14,7 @@ class Plant:
         print(f"{self.name}: {self.height}cm, {self.plant_age} days old")
 
 
-if __name__ == "__main__":
+def main() -> None:
     plant1 = Plant("Rose", 25, 30)
     count = -1
     for i in range(1, 8):
@@ -24,3 +24,7 @@ if __name__ == "__main__":
         plant1.age()
         count = count + 1
     print(f"Growth this week: +{count}")
+
+
+if __name__ == "__main__":
+    main()
