@@ -16,14 +16,17 @@ class Plant:
 
 def main() -> None:
     plant1 = Plant("Rose", 25, 30)
+    plant2 = Plant("Cactus", 15, 120)
     count = -1
-    for i in range(1, 8):
-        print(f"=== Day {i} ===")
-        plant1.get_info()
-        plant1.grow()
-        plant1.age()
-        count = count + 1
-    print(f"Growth this week: +{count}")
+    plants = [plant1, plant2]
+    for plant in plants:
+        for i in range(1, 8):
+            print(f"=== Day {i} ===")
+            plant.get_info()
+            plant.grow()
+            plant.age()
+            count = count + 1
+        print(f"Growth this week: +{count}")
 
 
 if __name__ == "__main__":
