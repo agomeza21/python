@@ -17,9 +17,9 @@ class Plant:
 def main() -> None:
     plant1 = Plant("Rose", 25, 30)
     plant2 = Plant("Cactus", 15, 120)
-    count = -1
     plants = [plant1, plant2]
     for plant in plants:
+        count = -1
         for i in range(1, 8):
             print(f"=== Day {i} ===")
             plant.get_info()
