@@ -59,7 +59,7 @@ class GardenManager:
             print(f"{plant.name} grew {self.growth}cm")
 
     def report(self) -> None:
-        """Prints a detailed report of all plants and garden statistics."""
+        """Prints a report of all plants and garden statistics."""
         print("Plants in garden:")
         for plant in self.plants:
             if isinstance(plant, PrizeFlower):
