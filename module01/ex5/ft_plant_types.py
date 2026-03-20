@@ -7,12 +7,15 @@ class Plant:
         self.plant_age = plant_age
 
     def grow(self) -> None:
+        """Increases the plant height by 1cm."""
         self.height += 1.0
 
     def age(self) -> None:
+        """Increases the plant age by 1 day."""
         self.plant_age += 1
 
     def show(self) -> None:
+        """Displays the plant information."""
         print(f"{self.name}: {self.height:.1f}cm, {self.plant_age} days old")
 
 
@@ -25,10 +28,11 @@ class Flower(Plant):
         self._blooming = False
 
     def bloom(self) -> None:
-        """Prints a message indicating that the flower is blooming."""
+        """Sets the flower blooming state to True."""
         self._blooming = True
     
     def show(self) -> None:
+        """Displays the flower information including color and blooming state."""
         super().show()
         print(f"Color: {self.color}")
         if self._blooming:
@@ -46,11 +50,12 @@ class Tree(Plant):
         self.trunk_diameter = trunk_diameter
 
     def produce_shade(self) -> None:
-        """Prints the square meters of shade produced by the tree."""
+        """Prints the shade produced by the tree based on its dimensions."""
         print(f"Tree {self.name} now produces a shade of "
               f"{self.height:.1f}cm long and {self.trunk_diameter:.1f}cm wide.")
         
     def show(self) -> None:
+        """Displays the tree information including trunk diameter."""
         super().show()
         print(f"Trunk diameter: {self.trunk_diameter:.1f}cm")
 
@@ -66,13 +71,16 @@ class Vegetable(Plant):
         self.nutritional_value = 0
 
     def grow(self) -> None:
+        """Increases the vegetable height by 2.1cm and nutritional value by 1."""
         self.height += 2.1
         self.nutritional_value += 1
 
     def age(self) -> None:
+        """Increases the vegetable age by 1 day."""
         super().age()
 
     def show(self) -> None:
+        """Displays the vegetable information including harvest season and nutritional value."""
         super().show()
         print(f"Harvest season: {self.harvest_season}")
         print(f"Nutritional value: {self.nutritional_value}")
