@@ -91,7 +91,7 @@ class Tree(Plant):
         """Initializes a tree with the diameter of its trunk."""
         super().__init__(name, height, plant_age)
         self.trunk_diameter = trunk_diameter
-        self._stats = Tree.Stats()
+        self._stats: Tree.Stats = Tree.Stats()
 
     def produce_shade(self) -> None:
         """Prints the shade produced by the tree based on its dimensions."""
