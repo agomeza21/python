@@ -20,7 +20,7 @@ def test_watering_system(plants: list) -> None:
             water_plant(plant)
             print(f"Watering {plant}: [OK]")
     except PlantError as p:
-        print(f"Caught PlantError: {p}")
+        print(f"Caught  {type(p).__name__}: {p}")
         print(".. ending tests and returning to main")
         return
     finally:
