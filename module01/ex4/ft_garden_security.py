@@ -33,7 +33,7 @@ class SecurePlant:
 def main() -> None:
     print("=== Garden Security System ===")
     plant1 = SecurePlant("Rose", 15.0, 10)
-    print(f"Plant created: ", end="")
+    print("Plant created: ", end="")
     plant1.show()
     print("")
     plant1.set_height(25)
@@ -42,7 +42,7 @@ def main() -> None:
     plant1.set_height(-5)
     plant1.set_age(-3)
     print("")
-    print(f"Current state: ", end="")
+    print("Current state: ", end="")
     plant1.show()
 
 

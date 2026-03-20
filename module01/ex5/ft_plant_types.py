@@ -21,7 +21,8 @@ class Plant:
 
 class Flower(Plant):
     """Plant with a flower that can bloom, inherits from Plant."""
-    def __init__(self, name: str, height: float, plant_age: int, color: str) -> None:
+    def __init__(self, name: str, height: float, plant_age: int,
+                 color: str) -> None:
         """Initializes a flower with its characteristic color."""
         super().__init__(name, height, plant_age)
         self.color = color
@@ -30,9 +31,10 @@ class Flower(Plant):
     def bloom(self) -> None:
         """Sets the flower blooming state to True."""
         self._blooming = True
-    
+
     def show(self) -> None:
-        """Displays the flower information including color and blooming state."""
+        """Displays the flower information including color
+         and blooming state."""
         super().show()
         print(f"Color: {self.color}")
         if self._blooming:
@@ -52,8 +54,9 @@ class Tree(Plant):
     def produce_shade(self) -> None:
         """Prints the shade produced by the tree based on its dimensions."""
         print(f"Tree {self.name} now produces a shade of "
-              f"{self.height:.1f}cm long and {self.trunk_diameter:.1f}cm wide.")
-        
+              f"{self.height:.1f}cm long and"
+              f" {self.trunk_diameter:.1f}cm wide.")
+
     def show(self) -> None:
         """Displays the tree information including trunk diameter."""
         super().show()
@@ -63,7 +66,8 @@ class Tree(Plant):
 class Vegetable(Plant):
     """Vegetable with harvest season and nutritional value,
       inherits from Plant."""
-    def __init__(self, name: str, height: float, plant_age: int, harvest_season: str) -> None:
+    def __init__(self, name: str, height: float, plant_age: int,
+                 harvest_season: str) -> None:
         """Initializes a vegetable with its harvest season
           and nutritional value."""
         super().__init__(name, height, plant_age)
@@ -71,7 +75,8 @@ class Vegetable(Plant):
         self.nutritional_value = 0
 
     def grow(self) -> None:
-        """Increases the vegetable height by 2.1cm and nutritional value by 1."""
+        """Increases the vegetable height by 2.1cm and
+          nutritional value by 1."""
         self.height += 2.1
         self.nutritional_value += 1
 
@@ -80,7 +85,8 @@ class Vegetable(Plant):
         super().age()
 
     def show(self) -> None:
-        """Displays the vegetable information including harvest season and nutritional value."""
+        """Displays the vegetable information including harvest
+          season and nutritional value."""
         super().show()
         print(f"Harvest season: {self.harvest_season}")
         print(f"Nutritional value: {self.nutritional_value}")

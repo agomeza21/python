@@ -42,11 +42,14 @@ class Plant:
 
         def display(self) -> None:
             """Displays the statistics."""
-            print(f"Stats: {self._grow_calls} grow, {self._age_calls} age, {self._show_calls} show")
+            print(f"Stats: {self._grow_calls} grow, {self._age_calls} age,"
+                  f" {self._show_calls} show")
+
 
 class Flower(Plant):
     """Plant with a flower that can bloom, inherits from Plant."""
-    def __init__(self, name: str, height: float, plant_age: int, color: str) -> None:
+    def __init__(self, name: str, height: float, plant_age: int,
+                 color: str) -> None:
         """Initializes a flower with its characteristic color."""
         super().__init__(name, height, plant_age)
         self.color = color
@@ -55,9 +58,10 @@ class Flower(Plant):
     def bloom(self) -> None:
         """Sets the flower blooming state to True."""
         self._blooming = True
-    
+
     def show(self) -> None:
-        """Displays the flower information including color and blooming state."""
+        """Displays the flower information including color
+          and blooming state."""
         super().show()
         print(f"Color: {self.color}")
         if self._blooming:
@@ -92,8 +96,10 @@ class Tree(Plant):
     def produce_shade(self) -> None:
         """Prints the shade produced by the tree based on its dimensions."""
         print(f"Tree {self.name} now produces a shade of "
-              f"{self.height:.1f}cm long and {self.trunk_diameter:.1f}cm wide.")
+              f"{self.height:.1f}cm long and "
+              f"{self.trunk_diameter:.1f}cm wide.")
         self._stats._shade_calls += 1
+
     def show(self) -> None:
         """Displays the tree information including trunk diameter."""
         super().show()
