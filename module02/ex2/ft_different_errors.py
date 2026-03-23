@@ -6,7 +6,7 @@ def garden_operations(operation_number: int) -> None:
     elif operation_number == 2:
         open("file.txt")
     elif operation_number == 3:
-       _ = "temperature" + 25  # type: ignore
+        _ = "temperature" + 25
 
 
 def test_error_types() -> None:

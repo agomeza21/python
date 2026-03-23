@@ -9,8 +9,9 @@ class PlantError(GardenError):
 
 
 def water_plant(plant_name: str) -> None:
-    if not plant_name[0].isupper():
+    if plant_name != plant_name.capitalize():
         raise PlantError(f"Invalid plant name to water: '{plant_name}'")
+    print(f"Watering {plant_name}: [OK]")
 
 
 def test_watering_system(plants: list) -> None:
@@ -18,7 +19,6 @@ def test_watering_system(plants: list) -> None:
     try:
         for plant in plants:
             water_plant(plant)
-            print(f"Watering {plant}: [OK]")
     except PlantError as p:
         print(f"Caught  {type(p).__name__}: {p}")
         print(".. ending tests and returning to main")
