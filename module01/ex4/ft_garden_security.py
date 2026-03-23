@@ -27,7 +27,8 @@ class SecurePlant:
         return self._age
 
     def show(self) -> None:
-        print(f"{self.name}: {self._height:.1f}cm, {self._age} days old")
+        print(f"{self.name}: {self.get_height():.1f}cm,"
+              f" {self.get_age()} days old")
 
 
 def main() -> None:
