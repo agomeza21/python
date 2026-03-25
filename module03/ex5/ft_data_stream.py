@@ -18,6 +18,7 @@ def consume_event(event_list: list) -> Generator:
 
 
 if __name__ == "__main__":
+    print("=== Game Data Stream Processor ===")
     players = ["alice", "bob", "charlie", "dylan"]
     actions = ["run", "eat", "sleep", "grab", "move",
                "climb", "swim", "release", "use", "jump"]
