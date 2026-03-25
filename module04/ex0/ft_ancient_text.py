@@ -8,7 +8,7 @@ def main() -> None:
     except FileNotFoundError:
         print("Storage vault not found.")
         print("")
-        print("Not able to start data recovery.")
+        print("Run data generator first.")
         return
     print("")
     print("RECOVERED DATA:")
