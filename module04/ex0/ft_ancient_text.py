@@ -15,6 +15,7 @@ def main() -> None:
     print(file.read())
     print("")
     print("Data recovery complete. Storage unit disconnected.")
+    file.close()
 
 
 if __name__ == "__main__":
