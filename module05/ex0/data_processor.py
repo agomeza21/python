@@ -5,7 +5,7 @@ from typing import Any, List, Dict, Tuple
 class DataProcessor(ABC):
     def __init__(self) -> None:
         self._storage: List[str] = []
-        self.rank = -1
+        self.rank: int = 0
 
     @abstractmethod
     def validate(self, data: Any) -> bool:
@@ -16,9 +16,12 @@ class DataProcessor(ABC):
         pass
 
     def output(self) -> Tuple[int, str]:
+        if not self._storage:
+            raise IndexError("No data to output")
         value = self._storage.pop(0)
+        current_rank = self.rank
         self.rank += 1
-        return (self.rank, value)
+        return (current_rank, value)
 
 
 class NumericProcessor(DataProcessor):
@@ -67,16 +70,17 @@ class LogProcessor(DataProcessor):
     def validate(self, data: Any) -> bool:
         if isinstance(data, dict):
             for key, value in data.items():
-                if isinstance(key, str) & isinstance(value, str):
-                    return True
+                if not isinstance(key, str) or not isinstance(value, str):
+                    return False
+            return True
         if isinstance(data, list):
             for element in data:
                 if not isinstance(element, dict):
                     return False
-                if isinstance(element, dict):
-                    for key, value in element.items():
-                        if isinstance(key, str) & isinstance(value, str):
-                            return True
+                for key, value in element.items():
+                    if not isinstance(key, str) or not isinstance(value, str):
+                        return False
+            return True
         return False
 
     def ingest(self, data: Dict[str, str] | List[Dict[str, str]]) -> None:
@@ -84,12 +88,16 @@ class LogProcessor(DataProcessor):
             raise ValueError("Improper log data")
         if isinstance(data, list):
             for element in data:
+                if "log_level" not in element or "log_message" not in element:
+                    raise ValueError("Improper log data")
                 log_level = element["log_level"]
                 log_message = element["log_message"]
                 self._storage.append(f"{log_level}: {log_message}")
         else:
-            log_level = element["log_level"]
-            log_message = element["log_message"]
+            if "log_level" not in data or "log_message" not in data:
+                raise ValueError("Improper log data")
+            log_level = data["log_level"]
+            log_message = data["log_message"]
             self._storage.append(f"{log_level}: {log_message}")
 
 
