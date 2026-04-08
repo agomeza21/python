@@ -175,6 +175,7 @@ class DataStream:
                 out_list.append(processor.output())
             plugin.process_output(out_list)
 
+
 if __name__ == "__main__":
     print("=== Code Nexus - Data Pipeline ===")
     print("")
