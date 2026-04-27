@@ -1,3 +1,4 @@
+'#ex1/capabilities.py'
 from abc import ABC, abstractmethod
 
 
@@ -9,7 +10,7 @@ class HealCapability(ABC):
 
 class TransformCapability(ABC):
     def __init__(self) -> None:
-        self.state: bool
+        self._state: bool = False
 
     @abstractmethod
     def transform(self) -> str:

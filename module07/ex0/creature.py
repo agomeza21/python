@@ -1,4 +1,4 @@
-'#ex0/creatures.py'
+'#ex0/creature.py'
 from abc import ABC, abstractmethod
 
 
