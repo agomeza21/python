@@ -1,4 +1,4 @@
-'#capacitator.py'
+'#capacitor.py'
 
 from ex1 import HealingCreatureFactory, TransformCreatureFactory
 
@@ -41,7 +41,7 @@ def test_transform() -> None:
         print(evolved.describe())
         print(evolved.attack())
         print(evolved.transform())
-        print(evolved. attack())
+        print(evolved.attack())
         print(evolved.revert())
     except Exception as e:
         print(f"An error occurred during transform capability test: {e}")

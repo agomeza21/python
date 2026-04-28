@@ -3,9 +3,9 @@ from abc import ABC, abstractmethod
 
 
 class Creature(ABC):
-    def __init__(self) -> None:
-        self.name: str
-        self.creature_type: str
+    def __init__(self, name: str, creature_type: str) -> None:
+        self.name = name
+        self.creature_type = creature_type
 
     @abstractmethod
     def attack(self) -> str:
@@ -17,8 +17,7 @@ class Creature(ABC):
 
 class Flameling(Creature):
     def __init__(self) -> None:
-        self.name: str = "Flameling"
-        self.creature_type: str = "Fire"
+        super().__init__("Flameling", "Fire")
 
     def attack(self) -> str:
         c_attack = "Ember"
@@ -27,8 +26,7 @@ class Flameling(Creature):
 
 class Pyrodon(Creature):
     def __init__(self) -> None:
-        self.name: str = "Pyrodon"
-        self.creature_type: str = "Fire/Flying"
+        super().__init__("Pyrodon", "Fire/Flying")
 
     def attack(self) -> str:
         c_attack = "Flamethrower"
@@ -37,8 +35,7 @@ class Pyrodon(Creature):
 
 class Aquabub(Creature):
     def __init__(self) -> None:
-        self.name: str = "Aquabub"
-        self.creature_type: str = "Water"
+        super().__init__("Aquabub", "Water")
 
     def attack(self) -> str:
         c_attack = "Water Gun"
@@ -47,8 +44,7 @@ class Aquabub(Creature):
 
 class Torragon(Creature):
     def __init__(self) -> None:
-        self.name: str = "Torragon"
-        self.creature_type: str = "Water"
+        super().__init__("Torragon", "Water")
 
     def attack(self) -> str:
         c_attack = "Hydro Pump"

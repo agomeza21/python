@@ -21,7 +21,8 @@ class BattleStrategy(ABC):
 
 class NormalStrategy(BattleStrategy):
     def is_valid(self, creature: Creature) -> bool:
-        return isinstance(creature, Creature)
+        _ = creature
+        return True
 
     def act(self, creature: Creature) -> str:
         return creature.attack()
