@@ -22,7 +22,7 @@ class Bloomelle(Creature, HealCapability):
         self.creature_type: str = "Grass/Fairy"
 
     def attack(self) -> str:
-        c_attack = " Petal Dance"
+        c_attack = "Petal Dance"
         return f"{self.name} uses {c_attack}!"
 
     def heal(self) -> str:
@@ -37,11 +37,11 @@ class Shiftling(Creature, TransformCapability):
         self._state: bool = False
 
     def transform(self) -> str:
-        self._state: bool = True
+        self._state = True
         return f"{self.name} shifts into a sharper form!"
 
     def revert(self) -> str:
-        self._state: bool = False
+        self._state = False
         return f"{self.name} returns to normal."
 
     def attack(self) -> str:
@@ -58,11 +58,11 @@ class Morphagon(Creature, TransformCapability):
         self._state: bool = False
 
     def transform(self) -> str:
-        self._state: bool = True
+        self._state = True
         return f"{self.name} morphs into a dragonic battle form!"
 
     def revert(self) -> str:
-        self._state: bool = False
+        self._state = False
         return f"{self.name} stabilizes its form."
 
     def attack(self) -> str:

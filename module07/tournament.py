@@ -24,7 +24,7 @@ def run_tournament(title: str, opponents:
             s_display_name = strategy.__class__.__name__.replace(
                 "Strategy", "")
             parts.append(f"({f_display_name}+{s_display_name})")
-        print(f" [ {','.join(parts)} ]")
+        print(f" [ {', '.join(parts)} ]")
 
         print("*** Tournament ***")
         print(f"{len(opponents)} opponents involved")
