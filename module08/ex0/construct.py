@@ -4,10 +4,12 @@ import sys
 import os
 import site
 
+
 def detect_venv() -> bool:
     return sys.prefix != sys.base_prefix
 
-def construct(in_venv: bool) ->None:
+
+def construct(in_venv: bool) -> None:
     if not in_venv:
         print("MATRIX STATUS: You're still plugged in")
         print("")
@@ -36,6 +38,7 @@ def construct(in_venv: bool) ->None:
         print("")
         print("Package installation path:")
         print(site.getsitepackages()[0])
+
 
 if __name__ == "__main__":
     construct(detect_venv())
