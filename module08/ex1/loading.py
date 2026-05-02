@@ -36,7 +36,7 @@ if __name__ == "__main__":
     if not check_dependencies():
         print("")
         print("To install it whit pip:")
-        print(f"  pip install -r requirements.txt")
+        print("  pip install -r requirements.txt")
         print("To install it whith Poetry:")
         print("  poetry install")
         sys.exit(1)
