@@ -1,19 +1,26 @@
-from dotenv import load_dotenv
 import os
+import sys
 
 
-def load_config() -> dict:
-    load_dotenv()
-    return {
-        "mode": os.environ.get("MATRIX_MODE", "unknown"),
-        "database": os.environ.get("DATABASE_URL", "not configured"),
-        "api_key": os.environ.get("API_KEY", "not configured"),
-        "log_level": os.environ.get("LOG_LEVEL", "INFO"),
-        "zion": os.environ.get("ZION_ENDPOINT", "not configured")
-    }
+def load_config() -> tuple[dict[str, str], bool]:
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()
+        is_dotenv_loaded = True
+    except ModuleNotFoundError:
+        is_dotenv_loaded = False
+
+    config = {
+            "mode": os.environ.get("MATRIX_MODE", "unknown"),
+            "database": os.environ.get("DATABASE_URL", "not configured"),
+            "api_key": os.environ.get("API_KEY", "not configured"),
+            "log_level": os.environ.get("LOG_LEVEL", "INFO"),
+            "zion": os.environ.get("ZION_ENDPOINT", "not configured")
+        }
+    return config, is_dotenv_loaded
 
 
-def security_check(config: dict) -> None:
+def security_check(config: dict[str, str]) -> None:
     print("Environment security check:")
     print("  [OK] No hardcoded secrets detected")
     if os.path.exists(".env"):
@@ -27,7 +34,16 @@ def security_check(config: dict) -> None:
 
 
 def main() -> None:
-    config = load_config()
+    config, dotenv_ok = load_config()
+    if not dotenv_ok:
+        print("")
+        print("Error: Missing dependency python-dotenv")
+        print("")
+        print("To install it use:")
+        print("  pip install python-dotenv")
+        print("")
+        sys.exit(1)
+
     print("")
     print("ORACLE STATUS: Reading the Matrix...")
     print("")
