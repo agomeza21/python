@@ -40,16 +40,22 @@ class AlienContact(BaseModel):
 
 
 def main() -> None:
-    valid_contact = AlienContact(
-        contact_id="AC_2024_001",
-        timestamp=datetime(2024, 1, 15, 10, 30, 00),
-        location="Area 51, Nevada",
-        contact_type=ContactType.radio,
-        signal_strength=8.5,
-        duration_minutes=45,
-        witness_count=5,
-        message_received="'Greetings from Zeta Reticuli'"
-    )
+    try:
+        valid_contact = AlienContact(
+            contact_id="AC_2024_001",
+            timestamp=datetime(2024, 1, 15, 10, 30, 00),
+            location="Area 51, Nevada",
+            contact_type=ContactType.radio,
+            signal_strength=8.5,
+            duration_minutes=45,
+            witness_count=5,
+            message_received="'Greetings from Zeta Reticuli'"
+        )
+    except ValidationError as e:
+        print("Expected validation error:")
+        for error in e.errors():
+            print(error["msg"].replace("Value error, ", ""))
+
     print("Alien Contact Log Validation")
     print("======================================")
     print("Valid contact report:")

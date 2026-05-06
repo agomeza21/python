@@ -15,15 +15,20 @@ class SpaceStation(BaseModel):
 
 
 def main() -> None:
-    valid_station = SpaceStation(
-        station_id="ISS001",
-        name=" International Space Station",
-        crew_size=6,
-        power_level=85.5,
-        oxygen_level=92.3,
-        last_maintenance=datetime(2024, 1, 15, 10, 30, 00),
-        is_operational=True
-    )
+    try:
+        valid_station = SpaceStation(
+            station_id="ISS001",
+            name=" International Space Station",
+            crew_size=6,
+            power_level=85.5,
+            oxygen_level=92.3,
+            last_maintenance=datetime(2024, 1, 15, 10, 30, 00),
+            is_operational=True
+        )
+    except ValidationError as e:
+        print("Expected validation error:")
+        for error in e.errors():
+            print(error["msg"])
 
     print("Space Station Data Validation")
     print("========================================")
