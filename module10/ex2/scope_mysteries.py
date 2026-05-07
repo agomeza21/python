@@ -67,6 +67,10 @@ def main() -> None:
     key = "secret"
     value = 42
     vault['store'](key, value)
-    print(f"Store {key} = {value}")
-    print(f"Recall {key}: {vault['recall'](key)}")
+    print(f"Store '{key}' = {value}")
+    print(f"Recall '{key}': {vault['recall'](key)}")
     print(f"Recall 'unknown': {vault['recall']('unknown')}")
+
+
+if __name__ == "__main__":
+    main()
