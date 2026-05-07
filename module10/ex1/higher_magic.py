@@ -9,7 +9,7 @@ def spell2(target: str, power: int) -> str:
     return f"{target} heals {power} HP"
 
 
-def condition(target: str, power: int) -> bool:
+def is_conditional(target: str, power: int) -> bool:
     _ = target
     return power > 50
 
@@ -32,7 +32,7 @@ def power_amplifier(base_spell: Callable, multiplier: int) -> Callable:
 def conditional_caster(condition: Callable, spell: Callable) -> Callable:
     def caster(target: str, power: int) -> str:
         if condition(target, power):
-            return spell2(target, power)
+            return spell(target, power)
         else:
             return "Spell fizzled"
     return caster
@@ -67,7 +67,7 @@ def main() -> None:
     print("Testing conditional caster...")
     power1 = 40
     power2 = 80
-    casted_conditional = conditional_caster(condition, spell2)
+    casted_conditional = conditional_caster(is_conditional, spell2)
     print(f"Test1: power is {power1}")
     result1 = casted_conditional("Dragon", power1)
     print(result1)
