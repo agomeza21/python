@@ -4,7 +4,7 @@ import time
 
 
 def spell_timer(func: Callable) -> Callable:
-    @wraps(func) 
+    @wraps(func)
     def wrapper(*args, **kwargs) -> str:
         print(f"Casting {func.__name__}...")
         inicio = time.time()
@@ -15,10 +15,12 @@ def spell_timer(func: Callable) -> Callable:
         return resultado
     return wrapper
 
+
 @spell_timer
 def fireball() -> str:
     time.sleep(0.1010)
     return "Fireball cast!"
+
 
 def power_validator(min_power: int) -> Callable:
     def decorator(func: Callable) -> Callable:
@@ -31,9 +33,11 @@ def power_validator(min_power: int) -> Callable:
         return wrapper
     return decorator
 
+
 @power_validator(20)
 def cast_spell(power) -> str:
     return f"Spell cast with {power} power"
+
 
 def retry_spell(max_attempts: int) -> Callable:
     def decorator2(func: Callable) -> Callable:
@@ -46,18 +50,23 @@ def retry_spell(max_attempts: int) -> Callable:
                 except Exception:
                     attempts += 1
                     if attempts < max_attempts:
-                        print(f"Spell failed, retrying... (attempt {attempts}/{max_attempts})")
+                        print(f"Spell failed, retrying... "
+                              f"(attempt {attempts}/{max_attempts})")
             return f"Spell casting failed after {max_attempts} attempts"
         return wrapper
     return decorator2
 
+
 attempt_counter = {"count": 0}
+
+
 @retry_spell(3)
 def spell() -> str:
     attempt_counter["count"] += 1
     if attempt_counter["count"] < 3:
         raise Exception()
     return "Waaaaaaagh spelled!"
+
 
 class MageGuild:
     @staticmethod
@@ -74,6 +83,7 @@ class MageGuild:
         if power >= 10:
             return f"Successfully cast {spell_name} with {power} power"
         return "Insufficient power for this spell"
+
 
 def main() -> None:
     print("Testing spell timer...")
@@ -101,6 +111,7 @@ def main() -> None:
     guild = MageGuild()
     print(guild.cast_spell("Lightning", 15))
     print(guild.cast_spell("Fireball", 5))
+
 
 if __name__ == "__main__":
     main()
